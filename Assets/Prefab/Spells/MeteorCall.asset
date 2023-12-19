@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MeteorCall
   cooldown_time: 15
-  active_time: 6
+  active_time: 4.5
+  destruction_range: 4
   spell: {fileID: 7957833072274404953, guid: 3355f6bfa6db8b24281b827de929694c, type: 3}

@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   acceleration: 10
+  marker_id: 292
   rb: {fileID: 0}
   v_axis: 0
   h_axis: 0

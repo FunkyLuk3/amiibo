@@ -4,21 +4,22 @@ using Emgu.CV.Structure;
 using Emgu.CV.Util;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class WebcamMarkerDetector : MonoBehaviour
 {
-	[SerializeField] private List<int> markers;
-	[SerializeField] private double threshold_maxvalue;
+	public List<int> markers;
+	public int last_detected_valid_marker;
 
 	private VideoCapture webcam;
 	private Mat webcame_frame;
 
-	public int last_detected_valid_marker;
-
 	// Start is called before the first frame update
 	void Start()
 	{
+		last_detected_valid_marker = 0;
+
 		webcam = new VideoCapture(0, VideoCapture.API.DShow);
 		webcame_frame = new Mat();
 
@@ -28,6 +29,7 @@ public class WebcamMarkerDetector : MonoBehaviour
 			webcam.Start();
 		}
 		
+		markers = new List<int>();
 	}
 
 	// Update is called once per frame

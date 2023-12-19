@@ -1,3 +1,4 @@
+using Emgu.CV.Dnn;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,18 +13,22 @@ public class EarthDash : Capacite
     public override void Activate(GameObject parent)
     {
         MeshRenderer mr = parent.GetComponent<MeshRenderer>();
-        Personnage movement = parent.GetComponent<Personnage>();
+        Personnage pers = parent.GetComponent<Personnage>();
 
-        movement.acceleration = dash_velocity;
+        pers.rb.excludeLayers |= (1 << 6);
+
+		pers.acceleration = dash_velocity;
         mr.enabled = false;
     }
 
     public override void BeginCooldown(GameObject parent) 
     {
         MeshRenderer mr = parent.GetComponent<MeshRenderer>();
-        Personnage movement = parent.GetComponent<Personnage>();
+        Personnage pers = parent.GetComponent<Personnage>();
 
-        movement.acceleration = movement.speed;
+        pers.rb.excludeLayers = 0;
+
+		pers.acceleration = pers.speed;
         mr.enabled = true;
     }
 }

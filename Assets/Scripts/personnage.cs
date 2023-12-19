@@ -6,8 +6,9 @@ public class Personnage : MonoBehaviour
 {
     public float speed;
     public float acceleration;
+    public int marker_id;
 
-    private Transform camera;
+    public Transform camera;
     public Rigidbody rb;
     public float v_axis;
     public float h_axis;
