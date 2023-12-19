@@ -11,9 +11,10 @@ public class WebcamMarkerDetector : MonoBehaviour
 	[SerializeField] private List<int> markers;
 	[SerializeField] private double threshold_maxvalue;
 
-
 	private VideoCapture webcam;
 	private Mat webcame_frame;
+
+	public int last_detected_valid_marker;
 
 	// Start is called before the first frame update
 	void Start()
@@ -60,7 +61,10 @@ public class WebcamMarkerDetector : MonoBehaviour
 
         for (int i = 0; i < marker_ids.Size; i++)
         {
-            Debug.Log(marker_ids[i]);
+			if (markers.Contains(marker_ids[i]))
+			{
+				last_detected_valid_marker = marker_ids[i];
+			}
         }
     }
 
