@@ -154,6 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markers: 2300000024010000
   threshold_maxvalue: 215
+  webcame_frame:
+    _disposed: 0
+    _needDispose: 1
+  last_detected_valid_marker: 0
 --- !u!4 &89366522
 Transform:
   m_ObjectHideFlags: 0
