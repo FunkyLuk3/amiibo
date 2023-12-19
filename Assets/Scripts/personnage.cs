@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class personnage : MonoBehaviour
+public class Personnage : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
+    public float acceleration;
 
     private Transform camera;
-    private Rigidbody rb;
-    private float v_axis;
-    private float h_axis;
+    public Rigidbody rb;
+    public float v_axis;
+    public float h_axis;
+
+    public Vector3 relative_movement;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +38,9 @@ public class personnage : MonoBehaviour
         Movement();
     }
 
-    private void Movement()
+    public void Movement()
     {
-        Vector3 relative_movement = new Vector3(h_axis, rb.velocity.y, v_axis) * speed;
+        relative_movement = new Vector3(h_axis, rb.velocity.y, v_axis) * acceleration;
         relative_movement = Quaternion.Euler(camera.transform.rotation.eulerAngles) * relative_movement;
         
         rb.velocity = relative_movement;
