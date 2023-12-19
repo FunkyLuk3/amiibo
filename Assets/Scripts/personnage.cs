@@ -22,7 +22,9 @@ public class Personnage : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
+
+		rb.freezeRotation = true;
+	}
 
     // Update is called once per frame
     void Update()
@@ -40,8 +42,10 @@ public class Personnage : MonoBehaviour
 
     public void Movement()
     {
-        relative_movement = new Vector3(h_axis, rb.velocity.y, v_axis) * acceleration;
-        relative_movement = Quaternion.Euler(camera.transform.rotation.eulerAngles) * relative_movement;
+        relative_movement = new Vector3(h_axis, 0, v_axis) * acceleration;
+        relative_movement = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, camera.transform.rotation.eulerAngles.z) * relative_movement;
+
+        relative_movement.y = rb.velocity.y;
         
         rb.velocity = relative_movement;
     }

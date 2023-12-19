@@ -9,6 +9,7 @@ public class MeteorCall : Capacite
 {
     public GameObject spell;
     private GameObject spell_instance;
+
     public override void Activate(GameObject parent)
     {
         Personnage movement = parent.GetComponent<Personnage>();
