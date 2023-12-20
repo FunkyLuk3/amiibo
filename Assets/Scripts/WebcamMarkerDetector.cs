@@ -4,6 +4,7 @@ using Emgu.CV.Structure;
 using Emgu.CV.Util;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,6 +42,8 @@ public class WebcamMarkerDetector : MonoBehaviour
 		if (webcam != null && webcam.IsOpened)
 		{
 			webcam.Grab();
+
+			DisplayFrameOnPlane();
 		}
 	}
 
@@ -66,6 +69,13 @@ public class WebcamMarkerDetector : MonoBehaviour
 
         for (int i = 0; i < marker_ids.Size; i++)
         {
+			Rectangle rect = new Rectangle(new Point ((int)corners[i][0].X, (int)corners[i][0].Y),
+										   new Size((int)corners[i][2].X - (int)corners[i][0].X, (int)corners[i][2].Y - (int)corners[i][0].Y));
+
+			MCvScalar color = new MCvScalar(0, 0,255,0);
+
+			CvInvoke.Rectangle(webcame_frame, rect, color, 3);
+
 			if (markers.Contains(marker_ids[i]))
 			{
 				last_detected_valid_marker = marker_ids[i];
@@ -78,6 +88,16 @@ public class WebcamMarkerDetector : MonoBehaviour
 		int w = webcam_display.texture.width;
 		int h = webcam_display.texture.height;
 		Texture2D t = new Texture2D(w, h, TextureFormat.RGBA32, false);
+
+		Mat m = new Mat(h, w, Emgu.CV.CvEnum.DepthType.Cv8U, 4);
+		CvInvoke.Resize(webcame_frame, m, new System.Drawing.Size(w, h));
+		CvInvoke.CvtColor(m, m, Emgu.CV.CvEnum.ColorConversion.Bgra2Rgba);
+
+		t.LoadRawTextureData(m.GetDataPointer(), w*h*4);
+
+		t.Apply();
+
+		webcam_display.texture = t;
 	}
 
 	void OnDestroy()

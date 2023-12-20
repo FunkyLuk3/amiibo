@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43736efac9d35444a9987450fa497690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  webcam_display: {fileID: 0}
+  webcam_display: {fileID: 2056265035}
   markers: 
   last_detected_valid_marker: 292
 --- !u!1 &639561279
@@ -2574,8 +2574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -170}
+  m_SizeDelta: {x: 300, y: 170}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2056265035
 MonoBehaviour:
@@ -2597,7 +2597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: d6971144598309840aa5627e0797e545, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
