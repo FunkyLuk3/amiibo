@@ -6,9 +6,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WebcamMarkerDetector : MonoBehaviour
 {
+	[SerializeField] RawImage webcam_display;
+
 	public List<int> markers;
 	public int last_detected_valid_marker;
 
@@ -69,6 +72,13 @@ public class WebcamMarkerDetector : MonoBehaviour
 			}
         }
     }
+
+	private void DisplayFrameOnPlane()
+	{
+		int w = webcam_display.texture.width;
+		int h = webcam_display.texture.height;
+		Texture2D t = new Texture2D(w, h, TextureFormat.RGBA32, false);
+	}
 
 	void OnDestroy()
 	{
