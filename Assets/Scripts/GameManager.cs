@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     {
         instance_webcam = gameObject.GetComponent<WebcamMarkerDetector>();
 
-        instance_webcam.markers.Clear();
+        instance_webcam.markers = new List<int>();
 
         foreach (GameObject character in character_prefabs)
         {
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 				Destroy(player_instance);
 
 				player_instance = Instantiate(prefab_to_instantiate, location, new Quaternion());
-                player_instance.GetComponent<Personnage>().camera.rotation = camera_rotation;
+                //player_instance.transform.Find("camera").rotation = camera_rotation;
 			}
         }
     }

@@ -32,8 +32,6 @@ public class WebcamMarkerDetector : MonoBehaviour
 			webcam.ImageGrabbed += new System.EventHandler(HandleWebcamQueryFrame);
 			webcam.Start();
 		}
-		
-		markers = new List<int>();
 	}
 
 	// Update is called once per frame
@@ -91,6 +89,7 @@ public class WebcamMarkerDetector : MonoBehaviour
 
 		Mat m = new Mat(h, w, Emgu.CV.CvEnum.DepthType.Cv8U, 4);
 		CvInvoke.Resize(webcame_frame, m, new System.Drawing.Size(w, h));
+		CvInvoke.Flip(m, m, Emgu.CV.CvEnum.FlipType.Vertical);
 		CvInvoke.CvtColor(m, m, Emgu.CV.CvEnum.ColorConversion.Bgra2Rgba);
 
 		t.LoadRawTextureData(m.GetDataPointer(), w*h*4);

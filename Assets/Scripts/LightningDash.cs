@@ -16,11 +16,11 @@ public class LightningDash : Capacite
 
 		rb.transform.Translate(rb.velocity.normalized * dash_distance);
 
-		dash_effect_instance = Instantiate(dash_effect, parent.transform.position, Quaternion.Euler(0, parent.transform.Find("camera").transform.rotation.eulerAngles.y, 0));
+		//dash_effect_instance = Instantiate(dash_effect, parent.transform.position, Quaternion.Euler(0, parent.transform.Find("camera").transform.rotation.eulerAngles.y, 0));
 	}
 
 	public override void BeginCooldown(GameObject parent)
 	{
-		Destroy(dash_effect_instance);
+		//Destroy(dash_effect_instance);
 	}
 }
