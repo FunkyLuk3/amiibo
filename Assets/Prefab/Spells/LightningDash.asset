@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27dc76ab66fe1742a63c6209dfbac95, type: 3}
+  m_Name: LightningDash
+  m_EditorClassIdentifier: 
+  name: LightningDash
+  cooldown_time: 3
+  active_time: 0.3
+  dash_distance: 10
+  dash_effect: {fileID: 1583737679337279438, guid: 70ea71c5b1bc21041b965aa88e8ba5b4, type: 3}
